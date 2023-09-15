@@ -1,0 +1,44 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'solve' function below.
+#
+# The function is expected to return a STRING.
+# The function accepts 2D_INTEGER_ARRAY points as parameter.
+#
+
+def solve(points):
+    xtrue = all([bool(i[0]==points[0][0]) for i in points])
+    ytrue = all([bool(i[1]==points[0][1]) for i in points])
+    ztrue = all([bool(i[2]==points[0][2]) for i in points])
+   
+    if xtrue | ytrue | ztrue:
+        return "YES"
+    else:
+        return "NO"
+        
+    
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    t = int(input().strip())
+
+    for t_itr in range(t):
+
+        points = []
+
+        for _ in range(4):
+            points.append(list(map(int, input().rstrip().split())))
+
+        result = solve(points)
+
+        fptr.write(result + '\n')
+
+    fptr.close()
